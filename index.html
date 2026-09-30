@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name | Portfolio</title>
+<meta name="description" content="Portfolio of Your Name: projects, skills and contact details.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#79b8ff; --sky2:#a9d3ff;
+  --grass:#5d9a2f; --grass-d:#46761f;
+  --dirt:#86603f; --dirt-d:#6b4a2e;
+  --stone:#7d7d7d; --deep:#1f1f24;
+  --panel:#c6c6c6; --panel-hi:#ffffff; --panel-lo:#555555;
+  --ink:#2b2b2b; --gold:#f5c542; --red:#b23a3a;
+  --head:"Press Start 2P","Courier New",monospace;
+  --body:"VT323","Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--body);font-size:24px;line-height:1.3;color:var(--ink);background:var(--deep);image-rendering:pixelated}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--gold);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* Minecraft GUI panel */
+.panel{background:var(--panel);border:4px solid #000;box-shadow:inset 4px 4px 0 var(--panel-hi),inset -4px -4px 0 var(--panel-lo);padding:22px}
+.btn{display:inline-block;font-family:var(--head);font-size:12px;text-decoration:none;color:#fff;background:var(--stone);border:4px solid #000;padding:12px 14px;text-shadow:2px 2px 0 #3a3a3a;box-shadow:inset 4px 4px 0 #b0b0b0,inset -4px -4px 0 #4a4a4a;cursor:pointer}
+.btn:hover{background:#6f7fd1;box-shadow:inset 4px 4px 0 #a9b4f0,inset -4px -4px 0 #3e4a94}
+.btn.go{background:var(--grass)}
+.btn.go:hover{background:#6fb53a;box-shadow:inset 4px 4px 0 #a5dd7a,inset -4px -4px 0 var(--grass-d)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:#000;border-bottom:4px solid #000}
+nav .wrap{display:flex;gap:8px;align-items:center;justify-content:space-between;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+nav b{font-family:var(--head);font-size:12px;color:var(--gold)}
+nav ul{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+nav .btn{font-size:10px;padding:8px 10px}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(var(--sky) 0 60%,var(--sky2) 60%);padding:70px 0 0;overflow:hidden}
+.sun{position:absolute;top:28px;right:9%;width:64px;height:64px;background:#ffe36b;box-shadow:0 0 0 8px #fff3a8}
+.cloud{position:absolute;width:32px;height:32px;background:#fff;box-shadow:32px 0 #fff,64px 0 #fff,96px 0 #fff,32px -32px #fff,64px -32px #fff;opacity:.95;animation:drift 60s linear infinite}
+.c1{top:50px;left:-120px}
+.c2{top:130px;left:-120px;animation-duration:90s;animation-delay:-40s;transform:scale(.7)}
+@keyframes drift{to{left:110%}}
+.sign{position:relative;max-width:640px;margin:0 auto 46px;background:#a9793f;border:4px solid #000;box-shadow:inset 4px 4px 0 #c9975a,inset -4px -4px 0 #7a5429;padding:34px 26px;text-align:center}
+.sign h1{font-family:var(--head);font-size:clamp(18px,4.4vw,30px);line-height:1.5;color:#2a1a08;margin-bottom:14px}
+.sign p{font-size:28px;color:#2a1a08;margin-bottom:22px}
+.sign .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.grass{height:32px;background:var(--grass);border-top:4px solid #000;box-shadow:inset 0 8px 0 #74b43b}
+.dirt{height:48px;background:
+  linear-gradient(90deg,transparent 0 12%,var(--dirt-d) 12% 16%,transparent 16% 47%,var(--dirt-d) 47% 52%,transparent 52% 81%,var(--dirt-d) 81% 85%,transparent 85%) 0 12px/100% 8px no-repeat,
+  var(--dirt)}
+
+/* sections */
+section{padding:56px 0;background:var(--deep)}
+section:nth-of-type(even){background:#2a2a31}
+h2{font-family:var(--head);font-size:clamp(16px,3.4vw,22px);color:#fff;text-shadow:3px 3px 0 #000;margin-bottom:24px;line-height:1.5}
+h2::before{content:"";display:inline-block;width:20px;height:20px;background:var(--grass);border:3px solid #000;box-shadow:inset 0 6px 0 #74b43b;margin-right:12px;vertical-align:-2px}
+h3{font-family:var(--head);font-size:13px;line-height:1.6;margin-bottom:10px;color:#1c1c1c}
+
+/* about */
+.about{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:start}
+.avatar{aspect-ratio:1;background:
+  linear-gradient(#000,#000) 25% 40%/12% 12% no-repeat,
+  linear-gradient(#000,#000) 63% 40%/12% 12% no-repeat,
+  linear-gradient(#6a3d1f,#6a3d1f) 50% 75%/40% 10% no-repeat,
+  linear-gradient(#3b2514 0 26%,#d9a574 26%);
+  border:4px solid #000;box-shadow:inset 4px 4px 0 rgba(255,255,255,.35),inset -4px -4px 0 rgba(0,0,0,.25)}
+.avatar-note{font-size:20px;margin-top:8px;text-align:center}
+.facts{list-style:none;margin-top:12px}
+.facts li{padding:2px 0}
+.facts li::before{content:"\25A0";color:var(--grass-d);margin-right:10px}
+
+/* skills */
+.hotbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-bottom:26px}
+.slot{background:#8b8b8b;border:4px solid #373737;box-shadow:inset 4px 4px 0 #373737,inset -4px -4px 0 #fff;padding:14px 8px;text-align:center}
+.slot b{display:block;font-family:var(--head);font-size:15px;color:#fff;text-shadow:2px 2px 0 #3a3a3a;margin-bottom:6px}
+.slot span{font-size:20px;color:#1f1f1f}
+.xp{display:grid;gap:12px}
+.xp div{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center}
+.bar{height:20px;background:#3b3b3b;border:4px solid #000;background-image:repeating-linear-gradient(90deg,transparent 0 14px,#000 14px 16px);position:relative}
+.bar i{position:absolute;inset:0 auto 0 0;background:#7ddc3c;box-shadow:inset 0 4px 0 #b6f27e;z-index:-0;}
+.bar::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0 14px,#000 14px 16px)}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.card{display:flex;flex-direction:column}
+.thumb{height:110px;border:4px solid #000;margin-bottom:14px;box-shadow:inset 4px 4px 0 rgba(255,255,255,.3),inset -4px -4px 0 rgba(0,0,0,.25)}
+.t1{background:linear-gradient(90deg,#5d9a2f 50%,#46761f 0) 0 0/32px 32px}
+.t2{background:linear-gradient(45deg,#7d7d7d 25%,#6b6b6b 0 50%,#7d7d7d 0 75%,#6b6b6b 0) 0 0/32px 32px}
+.t3{background:linear-gradient(90deg,#86603f 50%,#6b4a2e 0) 0 0/32px 32px}
+.card p{margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tags span{background:#8b8b8b;border:3px solid #373737;padding:0 8px;font-size:20px;color:#fff;text-shadow:1px 1px 0 #333}
+.card .btn{margin-top:auto;align-self:flex-start}
+
+/* timeline */
+.log{list-style:none;border-left:8px solid var(--dirt);padding-left:22px;display:grid;gap:18px}
+.log li{background:var(--panel);border:4px solid #000;box-shadow:inset 4px 4px 0 #fff,inset -4px -4px 0 #555;padding:14px 18px;position:relative}
+.log li::before{content:"";position:absolute;left:-42px;top:20px;width:20px;height:20px;background:var(--gold);border:4px solid #000}
+.log small{display:block;font-size:20px;color:#555}
+
+/* contact */
+.chat{background:#000;border:4px solid #555;padding:20px;color:#fff}
+.chat p{margin-bottom:8px}
+.chat .cmd{color:#7ddc3c}
+.chat a{color:var(--gold)}
+.chat .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+footer{background:#000;color:#aaa;text-align:center;padding:22px;font-size:20px}
+
+@media (max-width:640px){
+  body{font-size:22px}
+  .about{grid-template-columns:1fr}
+  .avatar{max-width:160px}
+  .xp div{grid-template-columns:1fr;gap:4px}
+  .sun{width:44px;height:44px;right:6%}
+}
+@media (prefers-reduced-motion:reduce){.cloud{animation:none;left:12%}.c2{left:60%}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <b>YOUR NAME</b>
+    <ul>
+      <li><a class="btn" href="#about">About</a></li>
+      <li><a class="btn" href="#skills">Skills</a></li>
+      <li><a class="btn" href="#projects">Projects</a></li>
+      <li><a class="btn" href="#experience">Experience</a></li>
+      <li><a class="btn" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sign">
+      <h1>Hi, I'm Your Name</h1>
+      <p>I build [what you do, e.g. web apps / data tools / designs] and I'm looking for a [role] position.</p>
+      <div class="row">
+        <a class="btn go" href="#projects">See my projects</a>
+        <a class="btn" href="#contact">Contact me</a>
+      </div>
+    </div>
+  </div>
+  <div class="grass" aria-hidden="true"></div>
+  <div class="dirt" aria-hidden="true"></div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <div class="panel about">
+      <div>
+        <div class="avatar" role="img" aria-label="Pixel avatar placeholder"></div>
+        <p class="avatar-note">Replace with your photo</p>
+      </div>
+      <div>
+        <h3>Who I am</h3>
+        <p>Write two or three sentences here: what you study or do, what you enjoy building, and what kind of work you want next. Keep it plain and specific so a recruiter gets it in ten seconds.</p>
+        <ul class="facts">
+          <li>Based in: Davao Region, Philippines</li>
+          <li>Looking for: [full-time / internship / freelance]</li>
+          <li>Education: [degree, school, year]</li>
+          <li>Languages: [English, Filipino, ...]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <div class="hotbar" aria-label="Main tools">
+      <div class="slot"><b>JS</b><span>JavaScript</span></div>
+      <div class="slot"><b>HTML</b><span>HTML and CSS</span></div>
+      <div class="slot"><b>PY</b><span>Python</span></div>
+      <div class="slot"><b>SQL</b><span>Databases</span></div>
+      <div class="slot"><b>GIT</b><span>Git and GitHub</span></div>
+    </div>
+    <div class="panel">
+      <div class="xp">
+        <div><span>JavaScript</span><div class="bar" role="img" aria-label="JavaScript: 80 percent"><i style="width:80%"></i></div></div>
+        <div><span>HTML and CSS</span><div class="bar" role="img" aria-label="HTML and CSS: 90 percent"><i style="width:90%"></i></div></div>
+        <div><span>Python</span><div class="bar" role="img" aria-label="Python: 65 percent"><i style="width:65%"></i></div></div>
+        <div><span>Databases</span><div class="bar" role="img" aria-label="Databases: 55 percent"><i style="width:55%"></i></div></div>
+        <div><span>Teamwork</span><div class="bar" role="img" aria-label="Teamwork: 85 percent"><i style="width:85%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="grid">
+      <article class="panel card">
+        <div class="thumb t1" aria-hidden="true"></div>
+        <h3>Project one</h3>
+        <p>One sentence on the problem it solves and what you did. Add a result if you have one, like users, speed or time saved.</p>
+        <div class="tags"><span>HTML</span><span>JavaScript</span></div>
+        <a class="btn go" href="https://github.com/yourusername/project-one">View code</a>
+      </article>
+      <article class="panel card">
+        <div class="thumb t2" aria-hidden="true"></div>
+        <h3>Project two</h3>
+        <p>Describe your role, the tools used and what you learned. Link to a live demo if there is one.</p>
+        <div class="tags"><span>Python</span><span>SQL</span></div>
+        <a class="btn go" href="https://github.com/yourusername/project-two">View code</a>
+      </article>
+      <article class="panel card">
+        <div class="thumb t3" aria-hidden="true"></div>
+        <h3>Project three</h3>
+        <p>School, freelance or personal work all count. Pick the three you are proudest of.</p>
+        <div class="tags"><span>Design</span><span>Teamwork</span></div>
+        <a class="btn go" href="https://github.com/yourusername/project-three">View code</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <ul class="log">
+      <li><h3>Job title, Company</h3><small>Month Year to Present</small>One line on what you did and what came of it.</li>
+      <li><h3>Internship or role, Organization</h3><small>Month Year to Month Year</small>One line on your responsibilities and a result.</li>
+      <li><h3>Degree, School</h3><small>Year to Year</small>Honors, relevant courses or thesis topic.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div class="chat">
+      <p class="cmd">&gt; /msg recruiter</p>
+      <p>I reply to messages within two days. Send me a note about the role and I'll get back to you.</p>
+      <div class="row">
+        <a class="btn go" href="mailto:you@example.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/yourusername">LinkedIn</a>
+        <a class="btn" href="https://github.com/yourusername">GitHub</a>
+        <a class="btn" href="resume.pdf">Download resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>&copy; <span id="yr">2026</span> Your Name. Built with pixels.</footer>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>
